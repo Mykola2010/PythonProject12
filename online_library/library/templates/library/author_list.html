@@ -1,0 +1,18 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<h2>Автори</h2>
+
+<ul class="list">
+    {% for author in authors %}
+        <li>
+            <a href="{% url 'author_detail' author.pk %}">
+                {{ author.first_name }} {{ author.last_name }}
+            </a>
+            — книг: {{ author.books.count }}
+        </li>
+    {% empty %}
+        <li>Авторів немає</li>
+    {% endfor %}
+</ul>
+{% endblock %}

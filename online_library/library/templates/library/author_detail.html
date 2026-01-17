@@ -1,0 +1,27 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<h2>{{ author.first_name }} {{ author.last_name }}</h2>
+
+{% if author.photo %}
+    <img src="{{ author.photo.url }}" width="200">
+{% endif %}
+
+<p>Рік народження: {{ author.birth_year }}</p>
+
+<h3>Книги автора</h3>
+
+<div class="grid">
+    {% for book in books %}
+        <div class="card">
+            {% if book.cover %}
+                <img src="{{ book.cover.url }}" width="120">
+            {% endif %}
+            <h4>{{ book.title }}</h4>
+            <a href="{% url 'book_detail' book.pk %}">Детальніше</a>
+        </div>
+    {% empty %}
+        <p>Книг немає</p>
+    {% endfor %}
+</div>
+{% endblock %}

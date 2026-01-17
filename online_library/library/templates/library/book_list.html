@@ -1,0 +1,16 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<h2>Книги</h2>
+
+<div class="grid">
+    {% for book in books %}
+        <div class="card">
+            <h3>{{ book.title }}</h3>
+            <p>Автор: {{ book.author }}</p>
+            <p>Рік: {{ book.published_year }}</p>
+            <a href="{% url 'book_detail' book.pk %}">Детальніше</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

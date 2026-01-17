@@ -1,0 +1,24 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<h2>{{ book.title }}</h2>
+
+{% if book.cover %}
+    <img src="{{ book.cover.url }}" width="200">
+{% endif %}
+
+<p><strong>Автор:</strong>
+   <a href="{% url 'author_detail' book.author.pk %}">
+       {{ book.author }}
+   </a>
+</p>
+
+<p><strong>Рік:</strong> {{ book.published_year }}</p>
+<p><strong>Сторінок:</strong> {{ book.pages }}</p>
+<p><strong>Статус:</strong> {{ book.get_status_display }}</p>
+
+<h3>Опис</h3>
+<p>{{ book.description|linebreaks }}</p>
+
+<a href="{% url 'book_list' %}">← Назад</a>
+{% endblock %}

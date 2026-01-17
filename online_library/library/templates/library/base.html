@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн-бібліотека</title>
+    <link rel="stylesheet" href="{% static 'library/css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>📚 Онлайн-бібліотека</h1>
+    <nav>
+        <a href="{% url 'author_list' %}">Автори</a>
+        <a href="{% url 'book_list' %}">Книги</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2026 Your Company. All rights reserved</p>
+</footer>
+
+</body>
+</html>
